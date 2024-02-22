@@ -2,7 +2,7 @@ package com.rbuilde.myapp.config;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
-import com.rbuilde.myapp.security.*;
+import com.rbuilde.myapp.security.AuthoritiesConstants;
 import com.rbuilde.myapp.web.filter.SpaWebFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -65,7 +65,6 @@ public class SecurityConfiguration {
                     .requestMatchers(mvc.pattern("/management/health")).permitAll()
                     .requestMatchers(mvc.pattern("/management/health/**")).permitAll()
                     .requestMatchers(mvc.pattern("/call-download")).permitAll()
-
                     .requestMatchers(mvc.pattern("/management/info")).permitAll()
                     .requestMatchers(mvc.pattern("/management/prometheus")).permitAll()
                     .requestMatchers(mvc.pattern("/management/**")).hasAuthority(AuthoritiesConstants.ADMIN)

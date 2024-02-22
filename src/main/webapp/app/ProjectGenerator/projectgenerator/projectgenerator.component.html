@@ -1,0 +1,58 @@
+<div>
+  <!-- Input fields for base name, package name, and port number -->
+  <label for="baseName">Application Name:</label>
+  <input type="text" id="baseName" [(ngModel)]="baseName" placeholder="Enter Base Name" />
+
+  <label for="packageName">Package Name:</label>
+  <input type="text" id="packageName" [(ngModel)]="packageName" placeholder="Enter Package Name" />
+
+  <label for="serverPort">Port Number:</label>
+  <input type="text" id="serverPort" [(ngModel)]="serverPort" placeholder="Enter Port Number" />
+
+  <label for="packageFolder">Repository:</label>
+  <input type="text" id="packageFolder" [(ngModel)]="packageFolder" placeholder="Enter Package Name" />
+</div>
+
+<!-- Dropdowns for authentication type, application type, and database type -->
+<div>
+  <label for="authType">Authentication Type:</label>
+  <select id="authType" [(ngModel)]="authenticationType">
+    <option value="jwt">JWT</option>
+    <option value="oauth2">OAuth2</option>
+  </select>
+
+  <label for="appType">Application Type:</label>
+  <select id="appType" [(ngModel)]="applicationType">
+    <option value="monolith">Monolithic App</option>
+    <option value="microservice">Microservice App</option>
+  </select>
+
+  <label for="dbType">Database Type:</label>
+  <select id="dbType" [(ngModel)]="databaseType">
+    <option value="sql">SQL</option>
+    <option value="mongodb">MongoDB</option>
+    <option value="cassandra">Cassandra</option>
+    <option value="couchbase">Couchbase</option>
+    <option value="neo4j">Neo4j</option>
+    <option value="no">No Database</option>
+  </select>
+</div>
+
+<div>
+  <!-- Buttons for generating project and selecting client framework -->
+  <button (click)="setClientFramework('angular')" [disabled]="isLoading">
+    {{ isLoadingAngular ? 'Angular...' : 'Angular' }}
+  </button>
+  <button (click)="setClientFramework('vue')" [disabled]="isLoading">
+    {{ isLoadingVue ? 'VueJs...' : 'VueJS' }}
+  </button>
+
+  <button (click)="setClientFramework('react')" [disabled]="isLoading">
+    {{ isLoadingReact ? 'React...' : 'React' }}
+  </button>
+</div>
+
+<!-- Message indicating project generation status -->
+<div [style.color]="isGenerationSuccessful ? 'green' : 'red'">
+  {{ isGenerationSuccessful ? 'Project generated successfully!' : '' }}
+</div>

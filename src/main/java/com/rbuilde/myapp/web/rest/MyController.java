@@ -15,7 +15,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -32,7 +31,7 @@ public class MyController {
 
     @PostMapping("/call-download")
     public ResponseEntity<byte[]> callExternalAPI(
-        @RequestHeader("Authorization") String authToken,
+        //  @RequestHeader("Authorization") String authToken,
         @RequestBody(required = false) Map<String, Object> payload
     ) {
         try {
@@ -54,7 +53,9 @@ public class MyController {
             // Convert map to JSON string
             String jsonBody = objectMapper.writeValueAsString(jsonMap);
 
-            byte[] responseData = myService.callExternalPostAPI(authToken, jsonBody);
+            // byte[] responseData = myService.callExternalPostAPI(authToken, jsonBody);
+            byte[] responseData = myService.callExternalPostAPI(jsonBody);
+
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
             headers.setContentDispositionFormData("attachment", "application.zip");

@@ -3,6 +3,7 @@ import { Routes } from '@angular/router';
 import { Authority } from 'app/config/authority.constants';
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
 import { errorRoute } from './layouts/error/error.route';
+import { ProjectgeneratorComponent } from './ProjectGenerator/projectgenerator/projectgenerator.component';
 
 import HomeComponent from './home/home.component';
 import NavbarComponent from './layouts/navbar/navbar.component';
@@ -14,6 +15,7 @@ const routes: Routes = [
     component: HomeComponent,
     title: 'home.title',
   },
+  { path: 'project-generator', component: ProjectgeneratorComponent, title: 'Generator.title' },
   {
     path: '',
     component: NavbarComponent,
