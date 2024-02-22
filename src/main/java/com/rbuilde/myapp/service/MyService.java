@@ -13,19 +13,20 @@ public class MyService {
         this.restTemplate = restTemplate;
     }
 
-    public byte[] callExternalPostAPI(String authToken, String jsonBody) {
-        // Check authentication token is provided
-        if (authToken == null || authToken.isEmpty()) {
-            throw new IllegalArgumentException("Authentication token is required");
-        }
+    // public byte[] callExternalPostAPI(String authToken, String jsonBody) {
+    // Check authentication token is provided
+    public byte[] callExternalPostAPI(String jsonBody) {
+        //  if (authToken == null || authToken.isEmpty()) {
+        // throw new IllegalArgumentException("Authentication token is required");
+        //  }
 
         // Define the API URL
-        String apiUrl = "http://localhost:8080/api/download-application";
+        String apiUrl = "https://start.jhipster.tech/api/download-application";
 
         // Set request headers with authentication token
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.set("Authorization", "Bearer " + authToken);
+        //    headers.set("Authorization", "Bearer " + authToken);
 
         // Create request entity with JSON body and headers
         HttpEntity<String> requestEntity = new HttpEntity<>(jsonBody, headers);
